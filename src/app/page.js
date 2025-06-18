@@ -13,19 +13,19 @@ import FeaturedArticles from "@/components/home/featuredArticales";
 
 export default function Home() {
   return (
-    <>
-    <Services/>
-      <Connect/>
-      <CompletedProject/>
-      <OurTech/>
-      <Platforms/>
-      <DigitalJourny/>
-      <DedicatedResource/>
-      <Professionalism/>
-      <DiverseIndustries/>
-      <CustomerExprience/>
-      <OurClient/>
-      <FeaturedArticles/>
-    </>
+      <>
+        <Services/>
+        <Connect/>
+        <CompletedProject/>
+        <OurTech/>
+        <Platforms/>
+        <DigitalJourny/>
+        <DedicatedResource/>
+        <Professionalism/>
+        <DiverseIndustries/>
+        <CustomerExprience/>
+        <OurClient/>
+        <FeaturedArticles/>
+      </>
   );
 }
