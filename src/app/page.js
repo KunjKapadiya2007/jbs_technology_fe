@@ -11,7 +11,6 @@ import CustomerExprience from "@/components/home/customerExprience";
 import OurClient from "@/components/home/ourClient";
 import FeaturedArticles from "@/components/home/featuredArticales";
 
-
 export default function Home() {
   return (
     <>
