@@ -1,10 +1,10 @@
 import React from 'react';
-import Portfolio from "@/pages/portfolio";
+import ProtfolioSection from "@/components/portfolio/protfolioSection";
 
 function Page(props) {
     return (
         <>
-            <Portfolio/>
+            <ProtfolioSection/>
         </>
     );
 }
