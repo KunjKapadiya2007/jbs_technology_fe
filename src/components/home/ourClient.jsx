@@ -31,7 +31,7 @@ const clientLogos = [
 function OurClient() {
     return (
         <Box sx={{py: {xs: 6, md: 10}, px: 2, backgroundColor: '#fff'}}>
-            <Container maxWidth="xl">
+            <Container maxWidth="lg">
                 {/* Heading */}
                 <Typography
                     variant="h4"
@@ -61,7 +61,7 @@ function OurClient() {
                 </Typography>
 
                 {/* Logo Grid */}
-                <Grid container spacing={2} justifyContent="center">
+                <Grid container spacing={3} justifyContent="center">
                     {clientLogos.map((logo, index) => (
                         <Grid key={index} item xs={12} sm={4} md={2} >
                             <Box
