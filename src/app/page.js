@@ -10,10 +10,13 @@ import DiverseIndustries from "@/components/home/diverseIndustries";
 import CustomerExprience from "@/components/home/customerExprience";
 import OurClient from "@/components/home/ourClient";
 import FeaturedArticles from "@/components/home/featuredArticales";
+import GetInTouch from "@/components/home/getInTouch";
+import Header from "@/components/home/header";
 
 export default function Home() {
   return (
       <>
+          <Header />
         <Services/>
         <Connect/>
         <CompletedProject/>
@@ -26,6 +29,7 @@ export default function Home() {
         <CustomerExprience/>
         <OurClient/>
         <FeaturedArticles/>
+          <GetInTouch/>
       </>
   );
 }
