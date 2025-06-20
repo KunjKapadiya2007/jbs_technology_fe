@@ -1,37 +1,44 @@
 'use client'
 import React from 'react';
-import { Box, GridLegacy as Grid, Typography, Card, CardContent, CardMedia } from '@mui/material';
-import img1 from '@/assets/designandDevlopment/Social_Media_Marketing.png';
-import img2 from '@/assets/designandDevlopment/Search_Engine_Optimization.png';
-import img3 from '@/assets/designandDevlopment/Graphic_Designing.png';
-import img4 from '@/assets/designandDevlopment/Pay_Per_Click_Ads.png';
-import img5 from '@/assets/designandDevlopment/Bulk_SMS_Email_Marketing.png';
+import {Box, GridLegacy as Grid, Typography, Card, CardContent, CardMedia, Button} from '@mui/material';
+import img1 from '@/assets/designandDevlopment/Web_Design_Development.png';
+import img2 from '@/assets/designandDevlopment/Mobile_App_Design_Development.png';
+import img3 from '@/assets/designandDevlopment/UI_UX_Design.png';
+import img4 from '@/assets/designandDevlopment/Content_Management_Systems.png';
+import img5 from '@/assets/designandDevlopment/Software_Development.png';
+import img6 from '@/assets/designandDevlopment/eCommerce_Development.png';
+import EastIcon from "@mui/icons-material/East";
 
 const services = [
     {
-        title: 'Social Media Marketing',
-        description: 'Combine your brand story with engaging content to go viral on Social Media',
+        title: 'Web Design and Development',
+        description: 'We craft digital experiences through our expert Web Design and Development to translate ideas into functional, user-centric websites and web applications.',
         image: img1,
     },
     {
-        title: 'Search Engine Optimization',
-        description: 'Climb the ladder of Search Engine Rankings for more clicks and conversions',
+        title: 'Mobile App Design and Development',
+        description: 'Transforming concepts into interactive realities, our Mobile App services create engaging applications for seamless experiences.',
         image: img2,
     },
     {
-        title: 'Graphic Designing',
-        description: 'Design Product Posters, Infographics, Pitch Deck, Stationery and much more!',
+        title: 'UI/UX Design',
+        description: 'Increase your user engagement with our thoughtful UI/UX Designing. We believe in creating intuitive interfaces that enhance usability and interactions.',
         image: img3,
     },
     {
-        title: 'Pay-Per-Click Ads',
-        description: 'Deliver personalised and targeted Ads to generate maximum RoI with PPC Ads',
+        title: 'Content Management Systems (CMS)',
+        description: 'Simplify content control with our versatile CMS solutions, empowering efficient creation, modification, and organisation of digital content across platforms.',
         image: img4,
     },
     {
-        title: 'Content & Email Marketing',
-        description: 'Boost your reach with bulk-sharing Newsletters and Promotional Mails affordably',
+        title: 'Software Development',
+        description: 'Our comprehensive software development services offer tailored solutions that address specific business needs.',
         image: img5,
+    },
+    {
+        title: 'eCommerce Development',
+        description: 'Empower your online business with E-commerce Development expertise to create robust platforms that provide personalised experiences and business growth.',
+        image: img6,
     },
 ];
 
@@ -58,7 +65,7 @@ function OurBranding() {
                             sx={{
                                 maxWidth: 340,
                                 width: '100%',
-                                borderRadius: 3,
+                                borderRadius: "30px",
                                 backgroundColor: '#FFFFFF',
                                 boxShadow: 'none',
                                 textAlign: 'center',
@@ -79,21 +86,54 @@ function OurBranding() {
                                 <Box sx={{
                                     fontSize:"20px",
                                     color:"#19082D",
-                                    lineHeight:"25px",
+                                    lineHeight:"35px",
                                     fontWeight:"500",
+                                    mb:"21px",
+                                    transition: 'color 0.3s ease',
+                                    '&:hover': {
+                                        color: '#F89100',
+                                    },
                                 }}>
                                     {service.title}
                                 </Box>
-                                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                                <Box sx={{ mb: "20px",fontSize:"13px",color:"#3E3E3E",fontWeight:"400" }}>
                                     {service.description}
-                                </Typography>
-                                <Typography
-                                    variant="body2"
-                                    color="primary"
-                                    sx={{ fontWeight: 600, cursor: 'pointer' }}
+                                </Box>
+                                <Button
+                                    variant="text"
+                                    sx={{
+                                        color: '#19082D',
+                                        textTransform: 'none',
+                                        fontWeight: 500,
+                                        fontSize: '18px',
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: '4px',
+                                        transition: 'color 0.3s ease',
+
+                                        '&:hover': {
+                                            color: '#F89100',
+                                            background: 'transparent',
+                                            '.arrow-icon': {
+                                                transform: 'translateX(8px)',
+                                                color: '#F89100',
+                                            },
+                                        },
+                                    }}
                                 >
-                                    Read More →
-                                </Typography>
+                                    Read More
+                                    <Box
+                                        component="span"
+                                        className="arrow-icon"
+                                        sx={{
+                                            display: 'inline-flex',
+                                            transition: 'transform 0.3s ease, color 0.3s ease',
+                                            fontSize: '20px',
+                                        }}
+                                    >
+                                        <EastIcon fontSize="inherit" />
+                                    </Box>
+                                </Button>
                             </CardContent>
                         </Card>
                     </Grid>

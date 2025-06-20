@@ -1,5 +1,5 @@
 import Services from "@/components/home/services";
-import Connect from "@/components/home/connect";
+import Connect from "@/components/global/connect";
 import CompletedProject from "@/components/home/completedProject";
 import OurTech from "@/components/home/ourTech";
 import Platforms from "@/components/home/platforms";
