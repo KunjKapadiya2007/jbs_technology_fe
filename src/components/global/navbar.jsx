@@ -41,7 +41,6 @@ import CallMadeIcon from '@mui/icons-material/CallMade';
 import logo from '../../assets/global/JBS-technology-logo-2 1.34fd4673b7887296fd1c (2).png';
 import {useRouter} from "next/navigation";
 
-// Utility function to generate slugs from menu items
 const generateSlug = (text) => {
     return text.toLowerCase()
         .replace(/[^\w\s-]/g, '') // Remove special characters
@@ -54,7 +53,7 @@ const navItems = [
     {
         title: 'Company',
         items: [
-            { text: 'About Us', href: '/about-us' },
+            { text: 'About Us', href: '/aboutus' },
             { text: 'Global Presence', href: '/global-presence' },
             { text: 'Engagement Models', href: '/engagement-models' },
             { text: 'Infrastructure', href: '/infrastructure' },
