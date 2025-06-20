@@ -92,7 +92,7 @@ const HeadquarterSection = () => {
                             <Box
                                 component="iframe"
                                 width="100%"
-                                height={isMobile ? 250 : 300}
+                                height={isMobile ? 250 : 330}
                                 style={{border: '1px solid #dfdfdf', borderRadius: '12px'}}
                                 loading="lazy"
                                 allowFullScreen
@@ -140,11 +140,11 @@ const HeadquarterSection = () => {
                                     {office.country}
                                 </Typography>
 
-                                <Typography variant="body1" sx={{mb: '26px', color: '#3e3e3e'}}>
+                                <Box sx={{mb: '26px', color: '#3e3e3e'}}>
                                     {office?.address?.map((line, i) => (
                                         <Box key={i}>{line}</Box>
                                     ))}
-                                </Typography>
+                                </Box>
 
                                 <Box display="flex" alignItems="center" sx={{mb: '15px', color: '#000'}}>
                                     <CallIcon fontSize="small" sx={{mr: 1, color: '#f89100'}}/>

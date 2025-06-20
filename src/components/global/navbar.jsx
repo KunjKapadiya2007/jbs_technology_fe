@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
     Box,
     AppBar,
@@ -41,26 +41,34 @@ import CallMadeIcon from '@mui/icons-material/CallMade';
 import logo from '../../assets/global/JBS-technology-logo-2 1.34fd4673b7887296fd1c (2).png';
 import {useRouter} from "next/navigation";
 
+const generateSlug = (text) => {
+    return text.toLowerCase()
+        .replace(/[^\w\s-]/g, '') // Remove special characters
+        .replace(/\s+/g, '-') // Replace spaces with hyphens
+        .replace(/--+/g, '-') // Replace multiple hyphens with single hyphen
+        .trim();
+};
+
 const navItems = [
     {
         title: 'Company',
         items: [
-            'About Us',
-            'Global Presence',
-            'Engagement Models',
-            'Infrastructure',
-            'Life At Budventure',
-            'Testimonials',
+            { text: 'About Us', href: '/aboutus' },
+            { text: 'Global Presence', href: '/global-presence' },
+            { text: 'Engagement Models', href: '/engagement-models' },
+            { text: 'Infrastructure', href: '/infrastructure' },
+            { text: 'Life At Budventure', href: '/life-at-budventure' },
+            { text: 'Testimonials', href: '/testimonials' },
             {
                 title: 'Solutions',
                 submenu: [
-                    'Design & Development',
-                    'On Demand App Development',
-                    'Digital Marketing',
-                    'API Integration',
-                    'QA Testing',
-                    'IT Consultation & Strategy',
-                    'Outsourcing IT Services'
+                    { text: 'Design & Development', href: '/design-development' },
+                    { text: 'On Demand App Development', href: '/on-demand-app-development' },
+                    { text: 'Digital Marketing', href: '/digital-marketing' },
+                    { text: 'API Integration', href: '/api-integration' },
+                    { text: 'QA Testing', href: '/qa-testing' },
+                    { text: 'IT Consultation & Strategy', href: '/it-consultation-strategy' },
+                    { text: 'Outsourcing IT Services', href: '/outsourcing-it-services' }
                 ]
             }
         ],
@@ -71,82 +79,90 @@ const navItems = [
             {
                 title: 'Frontend Development',
                 icon: <CodeIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                href: '/frontend-development',
                 items: [
-                    'Angular Development',
-                    'ReactJS Development',
-                    'Vue.JS Development',
-                    'Bootstrap Development'
+                    { text: 'Angular Development', href: '/angular' },
+                    { text: 'ReactJS Development', href: '/reactjs' },
+                    { text: 'Vue.JS Development', href: '/vuejs' },
+                    { text: 'Bootstrap Development', href: '/bootstrap' }
                 ],
             },
             {
                 title: 'Backend Development',
                 icon: <CodeIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                href: '/backend-development',
                 items: [
-                    'NodeJS Development',
-                    'Laravel Development',
-                    'Core PHP Development',
-                    'Java Development',
-                    'Python Development'
+                    { text: 'NodeJS Development', href: '/nodejs' },
+                    { text: 'Laravel Development', href: '/laravel' },
+                    { text: 'Core PHP Development', href: '/core-php' },
+                    { text: 'Java Development', href: '/java' },
+                    { text: 'Python Development', href: '/python' }
                 ],
             },
             {
                 title: 'Mobile App Development',
                 icon: <PhoneAndroidIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                href: '/mobile-app-development',
                 items: [
-                    'Android App Development',
-                    'iOS App Development',
-                    'Flutter App Development',
-                    'React Native Development'
+                    { text: 'Android App Development', href: '/android' },
+                    { text: 'iOS App Development', href: '/ios' },
+                    { text: 'Flutter App Development', href: '/flutter' },
+                    { text: 'React Native Development', href: '/react-native' }
                 ],
             },
             {
                 title: 'eCommerce & CMS',
                 icon: <DesignServicesIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                href: '/ecommerce-cms',
                 items: [
-                    'Wordpress Development',
-                    'Shopify Development',
-                    'Custom eCommerce'
+                    { text: 'Wordpress Development', href: '/wordpress' },
+                    { text: 'Shopify Development', href: '/shopify' },
+                    { text: 'Custom eCommerce', href: '/custom-ecommerce' }
                 ],
             },
             {
                 title: 'UI/UX Design',
                 icon: <DesignServicesIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                href: '/ui-ux-design',
                 items: [
-                    'Web Design',
-                    'Mobile App Design',
-                    'Software Design',
-                    'PSD to HTML Development'
+                    { text: 'Web Design', href: '/web-design' },
+                    { text: 'Mobile App Design', href: '/mobile-app-design' },
+                    { text: 'Software Design', href: '/software-design' },
+                    { text: 'PSD to HTML Development', href: '/psd-to-html' }
                 ],
             },
             {
                 title: 'Digital Marketing',
                 icon: <MarketingIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                href: '/digital-marketing',
                 items: [
-                    'Social Media Marketing',
-                    'Search Engine Optimization',
-                    'Graphic Designing',
-                    'Pay-Per-Click Ads',
-                    'Content & Email Marketing'
+                    { text: 'Social Media Marketing', href: '/social-media-marketing' },
+                    { text: 'Search Engine Optimization', href: '/seo' },
+                    { text: 'Graphic Designing', href: '/graphic-designing' },
+                    { text: 'Pay-Per-Click Ads', href: '/ppc-ads' },
+                    { text: 'Content & Email Marketing', href: '/content-email-marketing' }
                 ],
             },
             {
                 title: 'Quality Assurance',
                 icon: <SecurityIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                href: '/quality-assurance',
                 items: [
-                    'Manual Testing',
-                    'Automation Testing',
-                    'Performance Testing'
+                    { text: 'Manual Testing', href: '/manual-testing' },
+                    { text: 'Automation Testing', href: '/automation-testing' },
+                    { text: 'Performance Testing', href: '/performance-testing' }
                 ],
             },
             {
                 title: 'Trending Techstacks',
                 icon: <TrendingUpIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                href: '/trending-techstacks',
                 items: [
-                    'Artificial Intelligence',
-                    'Augmented Reality',
-                    'Virtual Reality',
-                    'Cyber Security',
-                    'Cloud Services'
+                    { text: 'Artificial Intelligence', href: '/artificial-intelligence' },
+                    { text: 'Augmented Reality', href: '/augmented-reality' },
+                    { text: 'Virtual Reality', href: '/virtual-reality' },
+                    { text: 'Cyber Security', href: '/cyber-security' },
+                    { text: 'Cloud Services', href: '/cloud-services' }
                 ],
             },
         ],
@@ -156,19 +172,41 @@ const navItems = [
         megaMenu: [
             {
                 title: 'Hire Web Developers',
-                items: ['Hire PHP Developers', 'Hire Laravel Developers', 'Hire Full Stack Developers'],
+                href: '/web-developers',
+                items: [
+                    { text: 'Hire PHP Developers', href: '/php' },
+                    { text: 'Hire Laravel Developers', href: '/laravel' },
+                    { text: 'Hire Full Stack Developers', href: '/full-stack' }
+                ],
             },
             {
                 title: 'Hire Mobile App Developers',
-                items: ['Hire Android Developers', 'Hire iOS Developers', 'Hire Flutter Developers', 'Hire React Native Developers'],
+                href: '/mobile-app-developers',
+                items: [
+                    { text: 'Hire Android Developers', href: '/android' },
+                    { text: 'Hire iOS Developers', href: '/ios' },
+                    { text: 'Hire Flutter Developers', href: '/flutter' },
+                    { text: 'Hire React Native Developers', href: '/react-native' }
+                ],
             },
             {
                 title: 'Hire Javascript Developers',
-                items: ['Hire MEAN Stack Developers', 'Hire MERN Stack Developers', 'Hire NodeJS Developers', 'Hire ReactJS Developers', 'Hire AngularJS Developers'],
+                href: '/javascript-developers',
+                items: [
+                    { text: 'Hire MEAN Stack Developers', href: '/mean-stack' },
+                    { text: 'Hire MERN Stack Developers', href: '/mern-stack' },
+                    { text: 'Hire NodeJS Developers', href: '/nodejs' },
+                    { text: 'Hire ReactJS Developers', href: '/reactjs' },
+                    { text: 'Hire AngularJS Developers', href: '/angularjs' }
+                ],
             },
             {
                 title: 'eCommerce & CMS',
-                items: ['Hire WordPress Developers', 'Hire Shopify Developers'],
+                href: '/ecommerce-cms',
+                items: [
+                    { text: 'Hire WordPress Developers', href: '/wordpress' },
+                    { text: 'Hire Shopify Developers', href: '/shopify' }
+                ],
             },
         ],
     },
@@ -195,6 +233,7 @@ const Navbar = () => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [expandedAccordion, setExpandedAccordion] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const router = useRouter();
 
     const handleDrawerToggle = () => {
@@ -226,6 +265,25 @@ const Navbar = () => {
         handlePopoverClose();
     };
 
+    const handleNavigation = (href) => {
+        if (href) {
+            router.push(href);
+            setMobileOpen(false);
+            setOpenMenu(null);
+        }
+    };
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     const drawer = (
         <Box sx={{width: '100%', height: '100vh', bgcolor: '#f8f9fa'}}>
             <Box sx={{p: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', bgcolor: 'white'}}>
@@ -233,8 +291,9 @@ const Navbar = () => {
                     sx={{
                         width: '85px',
                         height: '85px',
+                        cursor: 'pointer'
                     }}
-                    onClick={() => router.push('/')}
+                    onClick={() => handleNavigation('/')}
                 >
                     <Image src={logo} alt="logo" style={{width: '100%', height: '100%'}}/>
                 </Box>
@@ -276,7 +335,16 @@ const Navbar = () => {
                                         <Box>
                                             {item.megaMenu.map((section) => (
                                                 <Box key={section.title} sx={{mb: 2}}>
-                                                    <Box sx={{display: 'flex', alignItems: 'center', mb: 1,}}>
+                                                    <Box
+                                                        sx={{
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            mb: 1,
+                                                            cursor: 'pointer',
+                                                            '&:hover': { color: '#F89100' }
+                                                        }}
+                                                        onClick={() => handleNavigation(section.href)}
+                                                    >
                                                         {section.icon}
                                                         <Typography sx={{
                                                             ml: 1,
@@ -289,7 +357,8 @@ const Navbar = () => {
                                                     </Box>
                                                     {section.items.map((subItem) => (
                                                         <Typography
-                                                            key={subItem}
+                                                            key={subItem.text}
+                                                            onClick={() => handleNavigation(subItem.href)}
                                                             sx={{
                                                                 fontSize: '16px',
                                                                 color: '#19082D',
@@ -302,7 +371,7 @@ const Navbar = () => {
                                                                 '&:hover': {color: '#F89100'}
                                                             }}
                                                         >
-                                                            {subItem}
+                                                            {subItem.text}
                                                         </Typography>
                                                     ))}
                                                 </Box>
@@ -324,7 +393,9 @@ const Navbar = () => {
                                                         >
                                                             <AccordionSummary
                                                                 sx={{borderBottom: '1px solid rgba(0, 0, 0, 0.2)',}}
-                                                                expandIcon={<ExpandMoreIcon sx={{fontSize: '16px'}}/>}>
+                                                                expandIcon={<ExpandMoreIcon sx={{fontSize: '16px'}}/>}
+                                                                onClick={() => handleNavigation(subItem.href)}
+                                                            >
                                                                 <Typography sx={{
                                                                     fontSize: '16px',
                                                                     color: '#19082D',
@@ -336,7 +407,8 @@ const Navbar = () => {
                                                             <AccordionDetails>
                                                                 {subItem.submenu.map((submenuItem) => (
                                                                     <Typography
-                                                                        key={submenuItem}
+                                                                        key={submenuItem.text}
+                                                                        onClick={() => handleNavigation(submenuItem.href)}
                                                                         sx={{
                                                                             fontSize: '16px',
                                                                             fontWeight: 500,
@@ -347,7 +419,7 @@ const Navbar = () => {
                                                                             '&:hover': {color: '#F89100'}
                                                                         }}
                                                                     >
-                                                                        {submenuItem}
+                                                                        {submenuItem.text}
                                                                     </Typography>
                                                                 ))}
                                                             </AccordionDetails>
@@ -356,7 +428,8 @@ const Navbar = () => {
                                                 }
                                                 return (
                                                     <Typography
-                                                        key={subItem}
+                                                        key={subItem.text}
+                                                        onClick={() => handleNavigation(subItem.href)}
                                                         sx={{
                                                             fontSize: '16px',
                                                             color: '#19082D',
@@ -367,7 +440,7 @@ const Navbar = () => {
                                                             '&:hover': {color: '#F89100'}
                                                         }}
                                                     >
-                                                        {subItem}
+                                                        {subItem.text}
                                                     </Typography>
                                                 )
                                             })}
@@ -381,13 +454,12 @@ const Navbar = () => {
                     return (
                         <ListItem
                             key={item.title}
-                            component="a"
-                            href={item.href || '#'}
+                            onClick={() => handleNavigation(item.href)}
                             sx={{
                                 mb: 1,
                                 bgcolor: 'white',
                                 borderRadius: 1,
-                                textDecoration: 'none',
+                                cursor: 'pointer',
                                 '&:hover': {bgcolor: '#f5f5f5'}
                             }}
                         >
@@ -439,7 +511,6 @@ const Navbar = () => {
                         </Box>
                     </Box>
                 </Box>
-
 
                 <Box sx={{mb: 2, p: 2, bgcolor: 'white', borderRadius: 1}}>
                     <Box sx={{display: 'flex', alignItems: 'center', mb: 1}}>
@@ -533,7 +604,7 @@ const Navbar = () => {
     return (
         <Box sx={{position: 'relative'}}>
             {!isMobile && (
-                <AppBar position="sticky" elevation={0} sx={{backgroundColor: 'transparent', zIndex: 1000}}>
+                <AppBar position="fixed" elevation={0} sx={{backgroundColor:scrolled ? '#FFF' :'transparent', zIndex: 1000}}>
                     <Container maxWidth="lg">
                         <Toolbar sx={{justifyContent: 'space-between', py: 1}}>
                             <Box sx={{mr: 2}}>
@@ -542,8 +613,9 @@ const Navbar = () => {
                                         sx={{
                                             width: '85px',
                                             height: '85px',
+                                            cursor: 'pointer'
                                         }}
-                                        onClick={() => router.push('/')}
+                                        onClick={() => handleNavigation('/')}
                                     >
                                         <Image src={logo} alt="logo" style={{width: '100%', height: '100%'}}/>
                                     </Box>
@@ -587,11 +659,9 @@ const Navbar = () => {
                                     return (
                                         <Typography
                                             key={item.title}
-                                            component="a"
-                                            href={item.href || '#'}
+                                            onClick={() => handleNavigation(item.href)}
                                             sx={{
                                                 cursor: 'pointer',
-                                                textDecoration: 'none',
                                                 transition: 'color 0.3s',
                                                 color: '#253e59',
                                                 fontWeight: 600,
@@ -606,8 +676,7 @@ const Navbar = () => {
 
                             <Box>
                                 <Typography
-                                    component="a"
-                                    href="/connect"
+                                    onClick={() => handleNavigation('/connect')}
                                     sx={{
                                         backgroundColor: '#F89100',
                                         color: '#FFF',
@@ -616,7 +685,6 @@ const Navbar = () => {
                                         fontSize: '18px',
                                         fontWeight: 500,
                                         cursor: 'pointer',
-                                        textDecoration: 'none',
                                         transition: 'all 0.3s',
                                         display: 'inline-flex',
                                         alignItems: 'center',
@@ -642,10 +710,13 @@ const Navbar = () => {
                     sx={{backgroundColor: 'white', zIndex: 1000, boxShadow: 'none'}}
                 >
                     <Toolbar sx={{justifyContent: 'space-around'}}>
-                        <Box sx={{width: '85px', height: '85px'}}>
+                        <Box
+                            sx={{width: '85px', height: '85px', cursor: 'pointer'}}
+                            onClick={() => handleNavigation('/')}
+                        >
                             <Image src={logo} alt="logo" style={{width: '100%', height: '100%'}}/>
                         </Box>
-                        <Box sx={{display: 'flex', alignItems: 'center'}}>
+                        <Box sx={{display: 'flex', alignItems:'center'}}>
                             <IconButton
                                 color="inherit"
                                 aria-label="open drawer"
@@ -705,8 +776,8 @@ const Navbar = () => {
             {!isMobile && openMenu && (
                 <Box
                     sx={{
-                        position: 'absolute',
-                        top: '100%',
+                        position: 'fixed',
+                        top: '10%',
                         left: 0,
                         right: 0,
                         zIndex: 999,
@@ -748,11 +819,11 @@ const Navbar = () => {
                                                     </Box>
 
                                                     <Grid container spacing={1}>
-                                                        {section.items.map((subItem, idx) => (
+                                                        {section.items.map((subItem) => (
                                                             <Grid
                                                                 item
                                                                 xs={12}
-                                                                key={`${subItem}-${idx}`}
+                                                                key={subItem.text}
                                                                 sx={{
                                                                     display: 'flex',
                                                                     alignItems: 'center',
@@ -763,6 +834,7 @@ const Navbar = () => {
                                                                         color: '#320930',
                                                                     },
                                                                 }}
+                                                                onClick={() => handleNavigation(subItem.href)}
                                                             >
                                                                 <Box
                                                                     sx={{
@@ -783,7 +855,7 @@ const Navbar = () => {
                                                                         lineHeight: 1.4,
                                                                     }}
                                                                 >
-                                                                    {subItem}
+                                                                    {subItem.text}
                                                                 </Typography>
                                                             </Grid>
                                                         ))}
@@ -819,7 +891,7 @@ const Navbar = () => {
 
                                                     return (
                                                         <Box
-                                                            key={isSubObject ? sub.title : sub}
+                                                            key={isSubObject ? sub.text || sub.title : sub}
                                                             sx={{position: 'relative'}}
                                                             onMouseEnter={(e) => {
                                                                 setHoveredIndex(index);
@@ -844,9 +916,10 @@ const Navbar = () => {
                                                                         color: '#F89100',
                                                                     },
                                                                 }}
+                                                                onClick={() => handleNavigation(sub.href)}
                                                             >
                                                                 <ListItemText
-                                                                    primary={isSubObject ? sub.title : sub}
+                                                                    primary={isSubObject ? sub.text || sub.title : sub}
                                                                     primaryTypographyProps={{
                                                                         color: '#253E59',
                                                                         fontSize: '14px',
@@ -854,10 +927,9 @@ const Navbar = () => {
                                                                         fontWeight: 500,
                                                                     }}
                                                                 />
-                                                                {isSubObject && (
+                                                                {isSubWithMenu && (
                                                                     hoveredIndex === index
-                                                                        ? <RemoveIcon
-                                                                            sx={{fontSize: '14px', color: '#F89100'}}/>
+                                                                        ? <RemoveIcon sx={{fontSize: '14px', color: '#F89100'}}/>
                                                                         : <AddIcon sx={{fontSize: '14px'}}/>
                                                                 )}
                                                             </ListItem>
@@ -881,7 +953,7 @@ const Navbar = () => {
                                                                     <List dense sx={{p: 0}}>
                                                                         {sub.submenu.map((sublink) => (
                                                                             <ListItem
-                                                                                key={sublink}
+                                                                                key={sublink.text}
                                                                                 sx={{
                                                                                     p: 0,
                                                                                     mb: 1,
@@ -892,9 +964,10 @@ const Navbar = () => {
                                                                                         color: '#F89100',
                                                                                     },
                                                                                 }}
+                                                                                onClick={() => handleNavigation(sublink.href)}
                                                                             >
                                                                                 <ListItemText
-                                                                                    primary={sublink}
+                                                                                    primary={sublink.text}
                                                                                     primaryTypographyProps={{
                                                                                         color: '#253E59',
                                                                                         fontSize: '14px',

@@ -54,7 +54,7 @@ const PerksBenefitsSection = () => {
                             <Typography
                                 variant="h3"
                                 fontWeight={600}
-                                sx={{ color: '#19082d', my: '10px', fontSize: '28px', lineHeight: '42px',fontWeight:'500' }}
+                                sx={{ color: '#19082d', my: '10px', fontSize: '25px', lineHeight: '42px',fontWeight:'500' }}
                             >
                                 {perk.title}
                             </Typography>

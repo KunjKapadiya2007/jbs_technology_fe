@@ -35,4 +35,4 @@ const Presence = () => {
         </Container>
     )
 }
-export default Presence
+export default Presence;

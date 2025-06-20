@@ -5,14 +5,14 @@ import JobOpenings from "@/components/careers/jobOpenings";
 import PerksBenefitsSection from "@/components/careers/perksBenefitsSection";
 import Project from "@/components/global/project";
 
-function Page(props) {
+function Page() {
     return (
         <>
-            <CareersSection/>
-            <Call/>
-            <JobOpenings/>
-            <PerksBenefitsSection/>
-            <Project/>
+            <CareersSection />
+            <Call />
+            <JobOpenings />
+            <PerksBenefitsSection />
+            <Project />
         </>
     );
 }

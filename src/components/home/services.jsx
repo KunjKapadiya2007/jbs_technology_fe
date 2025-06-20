@@ -14,7 +14,6 @@ import img2 from '@/assets/home/Digital_Marketing_Branding.png';
 import img3 from '@/assets/home/eCommerce_CMS_Development.png';
 import img4 from '@/assets/home/Mobile_App_Development.png';
 
-// Styled Components
 const StyledCard = styled(Card)(({theme}) => ({
     height: '100%',
     borderRadius: '20px',
@@ -23,10 +22,10 @@ const StyledCard = styled(Card)(({theme}) => ({
     position: 'relative',
     background: '#FFFFFF',
     transition: 'transform 0.3s ease',
-    padding: '20px 20px', // fallback (will act as xs)
+    padding: '20px 20px',
 
     [theme.breakpoints.down('sm')]: {
-        padding: '20px 30px', // explicit xs (or small devices below sm)
+        padding: '20px 30px',
     },
     [theme.breakpoints.up('sm')]: {
         padding: '24px 36px',
@@ -34,9 +33,6 @@ const StyledCard = styled(Card)(({theme}) => ({
     [theme.breakpoints.up('md')]: {
         padding: '30px 50px',
     },
-    // '&:hover': {
-    //     transform: 'translateY(-5px)',
-    // },
 }));
 
 
@@ -51,7 +47,6 @@ const IconBox = styled(Box)({
     fontSize: '30px',
 });
 
-// Service Data
 const servicesData = [
     {
         title: 'Website & Software Development Services',
@@ -83,12 +78,10 @@ const servicesData = [
 function Services() {
     return (
         <Box sx={{
-            backgroundColor: "#F6F6F6",
+            py:'80px'
         }}>
             <Container maxWidth={"lg"}>
-                <Box sx={{
-                    my:"80px"
-                }}>
+                <Box>
                     <Box sx={{textAlign: 'center', marginBottom: '60px'}}>
                         <Typography
                             variant="h3"
