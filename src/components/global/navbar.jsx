@@ -295,7 +295,7 @@ const Navbar = () => {
                     }}
                     onClick={() => handleNavigation('/')}
                 >
-                    <Image src={logo} alt="logo" style={{width: '100%', height: '100%'}}/>
+                    <Image src={logo} alt="logo" style={{width: '100%', height: '100%',borderRadius:'50px'}}/>
                 </Box>
                 <IconButton onClick={handleDrawerToggle}>
                     <CloseIcon sx={{fontSize:'30px'}}/>
@@ -617,7 +617,7 @@ const Navbar = () => {
                                         }}
                                         onClick={() => handleNavigation('/')}
                                     >
-                                        <Image src={logo} alt="logo" style={{width: '100%', height: '100%'}}/>
+                                        <Image src={logo} alt="logo" style={{width: '100%', height: '100%', borderRadius:'50px'}}/>
                                     </Box>
                                 </Box>
                             </Box>

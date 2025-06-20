@@ -63,7 +63,7 @@ function Testimonials() {
                     Real Stories, Real Comments, Real Success!
                 </Box>
                 <Grid container spacing={4}>
-                    {testimonials.map((testimonial, index) => (
+                    {testimonials?.map((testimonial, index) => (
                         <Grid item xs={12} sm={6} key={index}>
                             <Card
                                 elevation={0}
