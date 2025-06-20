@@ -92,7 +92,7 @@ const HeadquarterSection = () => {
                             <Box
                                 component="iframe"
                                 width="100%"
-                                height={isMobile ? 250 : 300}
+                                height={isMobile ? 250 : 330}
                                 style={{border: '1px solid #dfdfdf', borderRadius: '12px'}}
                                 loading="lazy"
                                 allowFullScreen

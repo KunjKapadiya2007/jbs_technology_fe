@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState, useRef} from 'react';
+import React, { useState, useRef } from 'react';
 import {
     Box,
     AppBar,
@@ -39,7 +39,7 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import BusinessIcon from '@mui/icons-material/Business';
 import CallMadeIcon from '@mui/icons-material/CallMade';
 import logo from '../../assets/global/JBS-technology-logo-2 1.34fd4673b7887296fd1c (2).png';
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const navItems = [
     {
@@ -70,7 +70,7 @@ const navItems = [
         megaMenu: [
             {
                 title: 'Frontend Development',
-                icon: <CodeIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                icon: <CodeIcon sx={{ color: '#F89100', fontSize: 20 }} />,
                 items: [
                     'Angular Development',
                     'ReactJS Development',
@@ -80,7 +80,7 @@ const navItems = [
             },
             {
                 title: 'Backend Development',
-                icon: <CodeIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                icon: <CodeIcon sx={{ color: '#F89100', fontSize: 20 }} />,
                 items: [
                     'NodeJS Development',
                     'Laravel Development',
@@ -91,7 +91,7 @@ const navItems = [
             },
             {
                 title: 'Mobile App Development',
-                icon: <PhoneAndroidIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                icon: <PhoneAndroidIcon sx={{ color: '#F89100', fontSize: 20 }} />,
                 items: [
                     'Android App Development',
                     'iOS App Development',
@@ -101,7 +101,7 @@ const navItems = [
             },
             {
                 title: 'eCommerce & CMS',
-                icon: <DesignServicesIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                icon: <DesignServicesIcon sx={{ color: '#F89100', fontSize: 20 }} />,
                 items: [
                     'Wordpress Development',
                     'Shopify Development',
@@ -110,7 +110,7 @@ const navItems = [
             },
             {
                 title: 'UI/UX Design',
-                icon: <DesignServicesIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                icon: <DesignServicesIcon sx={{ color: '#F89100', fontSize: 20 }} />,
                 items: [
                     'Web Design',
                     'Mobile App Design',
@@ -120,7 +120,7 @@ const navItems = [
             },
             {
                 title: 'Digital Marketing',
-                icon: <MarketingIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                icon: <MarketingIcon sx={{ color: '#F89100', fontSize: 20 }} />,
                 items: [
                     'Social Media Marketing',
                     'Search Engine Optimization',
@@ -131,7 +131,7 @@ const navItems = [
             },
             {
                 title: 'Quality Assurance',
-                icon: <SecurityIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                icon: <SecurityIcon sx={{ color: '#F89100', fontSize: 20 }} />,
                 items: [
                     'Manual Testing',
                     'Automation Testing',
@@ -140,7 +140,7 @@ const navItems = [
             },
             {
                 title: 'Trending Techstacks',
-                icon: <TrendingUpIcon sx={{color: '#F89100', fontSize: 20}}/>,
+                icon: <TrendingUpIcon sx={{ color: '#F89100', fontSize: 20 }} />,
                 items: [
                     'Artificial Intelligence',
                     'Augmented Reality',
@@ -227,23 +227,23 @@ const Navbar = () => {
     };
 
     const drawer = (
-        <Box sx={{width: '100%', height: '100vh', bgcolor: '#f8f9fa'}}>
-            <Box sx={{p: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', bgcolor: 'white'}}>
+        <Box sx={{ width: '100%', height: '100vh', bgcolor: '#f8f9fa' }}>
+            <Box sx={{ p: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', bgcolor: 'white' }}>
                 <Box
                     sx={{
                         width: '85px',
-                        height: '85px',
+                        height: '85px', cursor: 'pointer'
                     }}
                     onClick={() => router.push('/')}
                 >
-                    <Image src={logo} alt="logo" style={{width: '100%', height: '100%'}}/>
+                    <Image src={logo} alt="logo" style={{ width: '100%', height: '100%' }} />
                 </Box>
                 <IconButton onClick={handleDrawerToggle}>
-                    <CloseIcon sx={{fontSize:'30px'}}/>
+                    <CloseIcon sx={{ fontSize: '30px' }} />
                 </IconButton>
             </Box>
 
-            <List sx={{px: 2, pt: 2}}>
+            <List sx={{ px: 2, pt: 2 }}>
                 {navItems.map((item, index) => {
                     if (item.megaMenu || item.items) {
                         return (
@@ -254,29 +254,29 @@ const Navbar = () => {
                                 sx={{
                                     mb: 1,
                                     boxShadow: 'none',
-                                    '&:before': {display: 'none'},
+                                    '&:before': { display: 'none' },
                                     bgcolor: 'white',
                                     borderRadius: 1
                                 }}
                             >
                                 <AccordionSummary
-                                    expandIcon={<ExpandMoreIcon/>}
+                                    expandIcon={<ExpandMoreIcon />}
                                     sx={{
                                         '& .MuiAccordionSummary-content': {
                                             alignItems: 'center'
                                         }
                                     }}
                                 >
-                                    <Typography sx={{fontWeight: 500, color: '#19082D'}}>
+                                    <Typography sx={{ fontWeight: 500, color: '#19082D' }}>
                                         {item.title}
                                     </Typography>
                                 </AccordionSummary>
-                                <AccordionDetails sx={{pt: 0}}>
+                                <AccordionDetails sx={{ pt: 0 }}>
                                     {item.megaMenu ? (
                                         <Box>
                                             {item.megaMenu.map((section) => (
-                                                <Box key={section.title} sx={{mb: 2}}>
-                                                    <Box sx={{display: 'flex', alignItems: 'center', mb: 1,}}>
+                                                <Box key={section.title} sx={{ mb: 2 }}>
+                                                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 1, }}>
                                                         {section.icon}
                                                         <Typography sx={{
                                                             ml: 1,
@@ -299,7 +299,7 @@ const Navbar = () => {
                                                                 py: 1,
                                                                 cursor: 'pointer',
                                                                 borderBottom: '1px solid rgba(0, 0, 0, 0.2)',
-                                                                '&:hover': {color: '#F89100'}
+                                                                '&:hover': { color: '#F89100' }
                                                             }}
                                                         >
                                                             {subItem}
@@ -317,14 +317,14 @@ const Navbar = () => {
                                                             key={subItem.title}
                                                             sx={{
                                                                 boxShadow: 'none',
-                                                                '&:before': {display: 'none'},
+                                                                '&:before': { display: 'none' },
                                                                 bgcolor: 'transparent',
                                                                 p: 0
                                                             }}
                                                         >
                                                             <AccordionSummary
-                                                                sx={{borderBottom: '1px solid rgba(0, 0, 0, 0.2)',}}
-                                                                expandIcon={<ExpandMoreIcon sx={{fontSize: '16px'}}/>}>
+                                                                sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.2)', }}
+                                                                expandIcon={<ExpandMoreIcon sx={{ fontSize: '16px' }} />}>
                                                                 <Typography sx={{
                                                                     fontSize: '16px',
                                                                     color: '#19082D',
@@ -344,10 +344,10 @@ const Navbar = () => {
                                                                             cursor: 'pointer',
                                                                             py: 1.5,
                                                                             borderBottom: '1px solid rgba(0, 0, 0, 0.2)',
-                                                                            '&:hover': {color: '#F89100'}
+                                                                            '&:hover': { color: '#F89100' }
                                                                         }}
                                                                     >
-                                                                        {submenuItem}
+                                                                        {submenuItem.label}
                                                                     </Typography>
                                                                 ))}
                                                             </AccordionDetails>
@@ -364,7 +364,7 @@ const Navbar = () => {
                                                             py: 1.5,
                                                             cursor: 'pointer',
                                                             borderBottom: '1px solid rgba(0, 0, 0, 0.2)',
-                                                            '&:hover': {color: '#F89100'}
+                                                            '&:hover': { color: '#F89100' }
                                                         }}
                                                     >
                                                         {subItem}
@@ -388,7 +388,7 @@ const Navbar = () => {
                                 bgcolor: 'white',
                                 borderRadius: 1,
                                 textDecoration: 'none',
-                                '&:hover': {bgcolor: '#f5f5f5'}
+                                '&:hover': { bgcolor: '#f5f5f5' }
                             }}
                         >
                             <ListItemText
@@ -403,13 +403,13 @@ const Navbar = () => {
                 })}
             </List>
 
-            <Box sx={{px: 2, mt: 3}}>
-                <Typography sx={{fontWeight: 600, color: '#253e59', mb: 2}}>
+            <Box sx={{ px: 2, mt: 3 }}>
+                <Typography sx={{ fontWeight: 600, color: '#253e59', mb: 2 }}>
                     Contact
                 </Typography>
 
-                <Box sx={{mb: 2, p: 2, bgcolor: 'white', borderRadius: 1}}>
-                    <Box sx={{display: 'flex', alignItems: 'center', mb: 1}}>
+                <Box sx={{ mb: 2, p: 2, bgcolor: 'white', borderRadius: 1 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                         <Box
                             sx={{
                                 p: '10px',
@@ -421,10 +421,10 @@ const Navbar = () => {
                                 mr: 1.5,
                             }}
                         >
-                            <LocationOnIcon sx={{color: '#FFF', fontSize: 18}}/>
+                            <LocationOnIcon sx={{ color: '#FFF', fontSize: 18 }} />
                         </Box>
                         <Box>
-                            <Typography sx={{color: '#3E3E3E', fontWeight: 500}}>
+                            <Typography sx={{ color: '#3E3E3E', fontWeight: 500 }}>
                                 Contact
                             </Typography>
                             <Typography
@@ -441,8 +441,8 @@ const Navbar = () => {
                 </Box>
 
 
-                <Box sx={{mb: 2, p: 2, bgcolor: 'white', borderRadius: 1}}>
-                    <Box sx={{display: 'flex', alignItems: 'center', mb: 1}}>
+                <Box sx={{ mb: 2, p: 2, bgcolor: 'white', borderRadius: 1 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                         <Box sx={{
                             p: '10px',
                             backgroundColor: '#F89100',
@@ -452,10 +452,10 @@ const Navbar = () => {
                             justifyContent: 'center',
                             mr: 1.5,
                         }}>
-                            <EmailIcon sx={{color: '#FFF', fontSize: 18,}}/>
+                            <EmailIcon sx={{ color: '#FFF', fontSize: 18, }} />
                         </Box>
                         <Box>
-                            <Typography sx={{color: '#3E3E3E', fontWeight: 500}}>
+                            <Typography sx={{ color: '#3E3E3E', fontWeight: 500 }}>
                                 Email
                             </Typography>
                             <Typography sx={{
@@ -470,8 +470,8 @@ const Navbar = () => {
                     </Box>
                 </Box>
 
-                <Box sx={{mb: 2, p: 2, bgcolor: 'white', borderRadius: 1}}>
-                    <Box sx={{display: 'flex', alignItems: 'center', mb: 1}}>
+                <Box sx={{ mb: 2, p: 2, bgcolor: 'white', borderRadius: 1 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                         <Box sx={{
                             p: '10px',
                             backgroundColor: '#F89100',
@@ -481,10 +481,10 @@ const Navbar = () => {
                             justifyContent: 'center',
                             mr: 1.5,
                         }}>
-                            <PhoneIcon sx={{color: '#FFF', fontSize: 18}}/>
+                            <PhoneIcon sx={{ color: '#FFF', fontSize: 18 }} />
                         </Box>
                         <Box>
-                            <Typography sx={{color: '#3E3E3E', fontWeight: 500}}>
+                            <Typography sx={{ color: '#3E3E3E', fontWeight: 500 }}>
                                 HR and Admin
                             </Typography>
                             <Typography sx={{
@@ -498,8 +498,8 @@ const Navbar = () => {
                     </Box>
                 </Box>
 
-                <Box sx={{mb: 2, p: 2, bgcolor: 'white', borderRadius: 1}}>
-                    <Box sx={{display: 'flex', alignItems: 'center', mb: 1}}>
+                <Box sx={{ mb: 2, p: 2, bgcolor: 'white', borderRadius: 1 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                         <Box sx={{
                             p: '10px',
                             backgroundColor: '#F89100',
@@ -509,10 +509,10 @@ const Navbar = () => {
                             justifyContent: 'center',
                             mr: 1.5,
                         }}>
-                            <BusinessIcon sx={{color: '#FFF', fontSize: 18,}}/>
+                            <BusinessIcon sx={{ color: '#FFF', fontSize: 18, }} />
                         </Box>
                         <Box>
-                            <Typography sx={{color: '#3E3E3E', fontWeight: 500}}>
+                            <Typography sx={{ color: '#3E3E3E', fontWeight: 500 }}>
                                 Sales Inquiry
                             </Typography>
                             <Typography sx={{
@@ -520,7 +520,7 @@ const Navbar = () => {
                                 color: '#19082D',
                                 lineHeight: 1.7,
                             }}>
-                                +91 99241 01601 <br/>
+                                +91 99241 01601 <br />
                                 +91 93161 18701
                             </Typography>
                         </Box>
@@ -531,26 +531,26 @@ const Navbar = () => {
     );
 
     return (
-        <Box sx={{position: 'relative'}}>
+        <Box sx={{ position: 'relative' }}>
             {!isMobile && (
-                <AppBar position="sticky" elevation={0} sx={{backgroundColor: 'transparent', zIndex: 1000}}>
+                <AppBar position="sticky" elevation={0} sx={{ backgroundColor: 'transparent', zIndex: 1000 }}>
                     <Container maxWidth="lg">
-                        <Toolbar sx={{justifyContent: 'space-between', py: 1}}>
-                            <Box sx={{mr: 2}}>
-                                <Box sx={{width: 85, height: 85}}>
+                        <Toolbar sx={{ justifyContent: 'space-between', py: 1 }}>
+                            <Box sx={{ mr: 2 }}>
+                                <Box sx={{ width: 85, height: 85 }}>
                                     <Box
                                         sx={{
                                             width: '85px',
-                                            height: '85px',
+                                            height: '85px', cursor: 'pointer'
                                         }}
                                         onClick={() => router.push('/')}
                                     >
-                                        <Image src={logo} alt="logo" style={{width: '100%', height: '100%'}}/>
+                                        <Image src={logo} alt="logo" style={{ width: '100%', height: '100%' }} />
                                     </Box>
                                 </Box>
                             </Box>
 
-                            <Box sx={{display: 'flex', alignItems: 'center', gap: 3}}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
                                 {navItems.map((item) => {
                                     const hasMega = !!item.megaMenu;
                                     const hasSimple = !!item.items;
@@ -567,18 +567,18 @@ const Navbar = () => {
                                                     sx={{
                                                         display: 'flex',
                                                         alignItems: 'center',
-                                                        position:'relative',
+                                                        position: 'relative',
                                                         fontSize: '16px',
                                                         cursor: 'pointer',
                                                         color: isOpen ? '#F89100' : '#253e59',
                                                         transition: 'all 0.3s',
-                                                        '&:hover': {color: '#320930'},
+                                                        '&:hover': { color: '#320930' },
                                                     }}
                                                 >
                                                     <Typography
-                                                        sx={{fontWeight: 600, mr: 0.5}}>{item.title}</Typography>
-                                                    {isOpen ? <RemoveIcon sx={{fontSize: '16px'}}/> :
-                                                        <AddIcon sx={{fontSize: '16px'}}/>}
+                                                        sx={{ fontWeight: 600, mr: 0.5 }}>{item.title}</Typography>
+                                                    {isOpen ? <RemoveIcon sx={{ fontSize: '16px' }} /> :
+                                                        <AddIcon sx={{ fontSize: '16px' }} />}
                                                 </Box>
                                             </Box>
                                         );
@@ -595,7 +595,7 @@ const Navbar = () => {
                                                 transition: 'color 0.3s',
                                                 color: '#253e59',
                                                 fontWeight: 600,
-                                                '&:hover': {color: '#320930'},
+                                                '&:hover': { color: '#320930' },
                                             }}
                                         >
                                             {item.title}
@@ -627,7 +627,7 @@ const Navbar = () => {
                                         },
                                     }}
                                 >
-                                    Let's Connect <CallMadeIcon sx={{fontSize: '20px'}}/>
+                                    Let's Connect <CallMadeIcon sx={{ fontSize: '20px' }} />
                                 </Typography>
                             </Box>
                         </Toolbar>
@@ -639,36 +639,36 @@ const Navbar = () => {
                 <AppBar
                     position="sticky"
                     elevation={0}
-                    sx={{backgroundColor: 'white', zIndex: 1000, boxShadow: 'none'}}
+                    sx={{ backgroundColor: 'white', zIndex: 1000, boxShadow: 'none' }}
                 >
-                    <Toolbar sx={{justifyContent: 'space-around'}}>
-                        <Box sx={{width: '85px', height: '85px'}}>
-                            <Image src={logo} alt="logo" style={{width: '100%', height: '100%'}}/>
+                    <Toolbar sx={{ justifyContent: 'space-around' }}>
+                        <Box sx={{ width: '85px', height: '85px' }}>
+                            <Image src={logo} alt="logo" style={{ width: '100%', height: '100%' }} />
                         </Box>
-                        <Box sx={{display: 'flex', alignItems: 'center'}}>
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
                             <IconButton
                                 color="inherit"
                                 aria-label="open drawer"
                                 onClick={handleDrawerToggle}
-                                sx={{color: '#FFF', backgroundColor: '#F89100', p: 1.5, fontWeight: 600}}
+                                sx={{ color: '#FFF', backgroundColor: '#F89100', p: 1.5, fontWeight: 600 }}
                             >
-                                <MenuIcon sx={{fontSize:'30px'}}/>
+                                <MenuIcon sx={{ fontSize: '30px' }} />
                             </IconButton>
-                            <Box sx={{ml: 2}}>
+                            <Box sx={{ ml: 2 }}>
                                 <Typography
                                     component="a"
                                     href="/connect"
                                     sx={{
                                         backgroundColor: '#F89100',
                                         color: '#FFF',
-                                        p: {sm:'14px 28px' , xs:'10px 20px'},
+                                        p: { sm: '14px 28px', xs: '10px 20px' },
                                         borderRadius: '14px',
                                         fontSize: '18px',
                                         fontWeight: 500,
                                         cursor: 'pointer',
                                         textDecoration: 'none',
                                         transition: 'all 0.3s',
-                                        display: {sm:'inline-flex' , xs:'none'},
+                                        display: { sm: 'inline-flex', xs: 'none' },
                                         alignItems: 'center',
                                         gap: '8px',
                                         '&:hover': {
@@ -677,7 +677,7 @@ const Navbar = () => {
                                         },
                                     }}
                                 >
-                                    Let's Connect <CallMadeIcon sx={{fontSize: '20px'}}/>
+                                    Let's Connect <CallMadeIcon sx={{ fontSize: '20px' }} />
                                 </Typography>
                             </Box>
                         </Box>
@@ -690,7 +690,7 @@ const Navbar = () => {
                 anchor="right"
                 open={mobileOpen}
                 onClose={handleDrawerToggle}
-                ModalProps={{keepMounted: true}}
+                ModalProps={{ keepMounted: true }}
                 sx={{
                     '& .MuiDrawer-paper': {
                         boxSizing: 'border-box',
@@ -719,11 +719,11 @@ const Navbar = () => {
 
                         if (currentItem?.megaMenu) {
                             return (
-                                <Container maxWidth="lg" sx={{py: 4, boxShadow: '0 0 20px rgba(0, 0, 0, .15)' , backgroundColor:'#FFF'}}>
+                                <Container maxWidth="lg" sx={{ py: 4, boxShadow: '0 0 20px rgba(0, 0, 0, .15)', backgroundColor: '#FFF' }}>
                                     <Grid container spacing={4}>
                                         {currentItem.megaMenu.map((section) => (
-                                            <Grid item size={{xs: 12, sm: 6, md: 3,}} key={section.title}>
-                                                <Box sx={{mb: 2}}>
+                                            <Grid item size={{ xs: 12, sm: 6, md: 3, }} key={section.title}>
+                                                <Box sx={{ mb: 2 }}>
                                                     <Box sx={{
                                                         display: 'flex',
                                                         alignItems: 'center',
@@ -731,7 +731,7 @@ const Navbar = () => {
                                                         borderBottom: '1px solid #000'
                                                     }}>
                                                         {section.icon && (
-                                                            <Box sx={{mr: 1.5}}>
+                                                            <Box sx={{ mr: 1.5 }}>
                                                                 {section.icon}
                                                             </Box>
                                                         )}
@@ -798,122 +798,122 @@ const Navbar = () => {
 
                         if (currentItem?.items) {
                             return (
-                                <Container maxWidth={'lg'} sx={{position: 'relative'}}>
-                                <Box
-                                    sx={{
-                                        position: 'absolute',
-                                        top: '100%',
-                                        left: '18%',
-                                        zIndex: 1,
-                                        boxShadow: '0 0 20px rgba(0, 0, 0, .15)',
-                                        p: '20px 30px',
-                                        backgroundColor: 'white',
-                                    }}
-                                >
-                                    <Grid container spacing={3}>
-                                        <Grid item xs={12} md={4}>
-                                            <List dense sx={{p: 0}}>
-                                                {currentItem.items.map((sub, index) => {
-                                                    const isSubWithMenu = typeof sub === 'object' && sub.submenu;
-                                                    const isSubObject = typeof sub === 'object';
+                                <Container maxWidth={'lg'} sx={{ position: 'relative' }}>
+                                    <Box
+                                        sx={{
+                                            position: 'absolute',
+                                            top: '100%',
+                                            left: '18%',
+                                            zIndex: 1,
+                                            boxShadow: '0 0 20px rgba(0, 0, 0, .15)',
+                                            p: '20px 30px',
+                                            backgroundColor: 'white',
+                                        }}
+                                    >
+                                        <Grid container spacing={3}>
+                                            <Grid item xs={12} md={4}>
+                                                <List dense sx={{ p: 0 }}>
+                                                    {currentItem.items.map((sub, index) => {
+                                                        const isSubWithMenu = typeof sub === 'object' && sub.submenu;
+                                                        const isSubObject = typeof sub === 'object';
 
-                                                    return (
-                                                        <Box
-                                                            key={isSubObject ? sub.title : sub}
-                                                            sx={{position: 'relative'}}
-                                                            onMouseEnter={(e) => {
-                                                                setHoveredIndex(index);
-                                                                const submenu = e.currentTarget.querySelector('.submenu-box');
-                                                                if (submenu) submenu.style.display = 'block';
-                                                            }}
-                                                            onMouseLeave={(e) => {
-                                                                setHoveredIndex(null);
-                                                                const submenu = e.currentTarget.querySelector('.submenu-box');
-                                                                if (submenu) submenu.style.display = 'none';
-                                                            }}
-                                                        >
-                                                            <ListItem
-                                                                sx={{
-                                                                    p: 0,
-                                                                    mb: 1,
-                                                                    cursor: 'pointer',
-                                                                    borderRadius: 1,
-                                                                    transition: 'all 0.2s',
-                                                                    width: '240px',
-                                                                    '&:hover .MuiListItemText-primary': {
-                                                                        color: '#F89100',
-                                                                    },
+                                                        return (
+                                                            <Box
+                                                                key={isSubObject ? sub.title : sub}
+                                                                sx={{ position: 'relative' }}
+                                                                onMouseEnter={(e) => {
+                                                                    setHoveredIndex(index);
+                                                                    const submenu = e.currentTarget.querySelector('.submenu-box');
+                                                                    if (submenu) submenu.style.display = 'block';
+                                                                }}
+                                                                onMouseLeave={(e) => {
+                                                                    setHoveredIndex(null);
+                                                                    const submenu = e.currentTarget.querySelector('.submenu-box');
+                                                                    if (submenu) submenu.style.display = 'none';
                                                                 }}
                                                             >
-                                                                <ListItemText
-                                                                    primary={isSubObject ? sub.title : sub}
-                                                                    primaryTypographyProps={{
-                                                                        color: '#253E59',
-                                                                        fontSize: '14px',
-                                                                        transition: 'all 0.2s',
-                                                                        fontWeight: 500,
-                                                                    }}
-                                                                />
-                                                                {isSubObject && (
-                                                                    hoveredIndex === index
-                                                                        ? <RemoveIcon
-                                                                            sx={{fontSize: '14px', color: '#F89100'}}/>
-                                                                        : <AddIcon sx={{fontSize: '14px'}}/>
-                                                                )}
-                                                            </ListItem>
-
-                                                            {isSubWithMenu && (
-                                                                <Box
-                                                                    className="submenu-box"
+                                                                <ListItem
                                                                     sx={{
-                                                                        display: 'none',
-                                                                        position: 'absolute',
-                                                                        top: 0,
-                                                                        left: '100%',
-                                                                        backgroundColor: 'white',
-                                                                        boxShadow: '0 0 15px rgba(0,0,0,0.1)',
+                                                                        p: 0,
+                                                                        mb: 1,
+                                                                        cursor: 'pointer',
                                                                         borderRadius: 1,
-                                                                        p: 2,
-                                                                        zIndex: 1000,
-                                                                        minWidth: '240px',
+                                                                        transition: 'all 0.2s',
+                                                                        width: '240px',
+                                                                        '&:hover .MuiListItemText-primary': {
+                                                                            color: '#F89100',
+                                                                        },
                                                                     }}
                                                                 >
-                                                                    <List dense sx={{p: 0}}>
-                                                                        {sub.submenu.map((sublink) => (
-                                                                            <ListItem
-                                                                                key={sublink}
-                                                                                sx={{
-                                                                                    p: 0,
-                                                                                    mb: 1,
-                                                                                    cursor: 'pointer',
-                                                                                    borderRadius: 1,
-                                                                                    transition: 'all 0.2s',
-                                                                                    '&:hover .MuiListItemText-primary': {
-                                                                                        color: '#F89100',
-                                                                                    },
-                                                                                }}
-                                                                            >
-                                                                                <ListItemText
-                                                                                    primary={sublink}
-                                                                                    primaryTypographyProps={{
-                                                                                        color: '#253E59',
-                                                                                        fontSize: '14px',
+                                                                    <ListItemText
+                                                                        primary={isSubObject ? sub.title : sub}
+                                                                        primaryTypographyProps={{
+                                                                            color: '#253E59',
+                                                                            fontSize: '14px',
+                                                                            transition: 'all 0.2s',
+                                                                            fontWeight: 500,
+                                                                        }}
+                                                                    />
+                                                                    {isSubObject && (
+                                                                        hoveredIndex === index
+                                                                            ? <RemoveIcon
+                                                                                sx={{ fontSize: '14px', color: '#F89100' }} />
+                                                                            : <AddIcon sx={{ fontSize: '14px' }} />
+                                                                    )}
+                                                                </ListItem>
+
+                                                                {isSubWithMenu && (
+                                                                    <Box
+                                                                        className="submenu-box"
+                                                                        sx={{
+                                                                            display: 'none',
+                                                                            position: 'absolute',
+                                                                            top: 0,
+                                                                            left: '100%',
+                                                                            backgroundColor: 'white',
+                                                                            boxShadow: '0 0 15px rgba(0,0,0,0.1)',
+                                                                            borderRadius: 1,
+                                                                            p: 2,
+                                                                            zIndex: 1000,
+                                                                            minWidth: '240px',
+                                                                        }}
+                                                                    >
+                                                                        <List dense sx={{ p: 0 }}>
+                                                                            {sub.submenu.map((sublink) => (
+                                                                                <ListItem
+                                                                                    key={sublink}
+                                                                                    sx={{
+                                                                                        p: 0,
+                                                                                        mb: 1,
+                                                                                        cursor: 'pointer',
+                                                                                        borderRadius: 1,
                                                                                         transition: 'all 0.2s',
-                                                                                        fontWeight: 500,
+                                                                                        '&:hover .MuiListItemText-primary': {
+                                                                                            color: '#F89100',
+                                                                                        },
                                                                                     }}
-                                                                                />
-                                                                            </ListItem>
-                                                                        ))}
-                                                                    </List>
-                                                                </Box>
-                                                            )}
-                                                        </Box>
-                                                    );
-                                                })}
-                                            </List>
+                                                                                >
+                                                                                    <ListItemText
+                                                                                        primary={sublink}
+                                                                                        primaryTypographyProps={{
+                                                                                            color: '#253E59',
+                                                                                            fontSize: '14px',
+                                                                                            transition: 'all 0.2s',
+                                                                                            fontWeight: 500,
+                                                                                        }}
+                                                                                    />
+                                                                                </ListItem>
+                                                                            ))}
+                                                                        </List>
+                                                                    </Box>
+                                                                )}
+                                                            </Box>
+                                                        );
+                                                    })}
+                                                </List>
+                                            </Grid>
                                         </Grid>
-                                    </Grid>
-                                </Box>
+                                    </Box>
                                 </Container>
                             );
                         }
